@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://km36nrykmui8"]
+
+[ext_resource type="Texture2D" uid="uid://dqpr8p63tb0yu" path="res://assets/planets/star.png" id="1_n6hgd"]
+[ext_resource type="PackedScene" uid="uid://c71qmixrcx8ab" path="res://scenes/space/spaceship/spaceship.tscn" id="1_ugvpa"]
+[ext_resource type="Texture2D" uid="uid://bbkuvvmuaj12k" path="res://assets/planets/planet02.png" id="2_0a2q3"]
+[ext_resource type="PackedScene" uid="uid://cc2pwecnk648u" path="res://scenes/space/planet/planet.tscn" id="2_x217o"]
+[ext_resource type="Texture2D" uid="uid://to8u405leqhm" path="res://assets/planets/planet05.png" id="3_n6hgd"]
+[ext_resource type="Texture2D" uid="uid://cbrcr8tavqtpt" path="res://assets/planets/planet00.png" id="4_wfdyj"]
+[ext_resource type="PackedScene" uid="uid://cxd8do0a8l03" path="res://scenes/space/ui/counter.tscn" id="7_wfdyj"]
+
+[node name="Space" type="Node2D"]
+
+[node name="Space" type="ColorRect" parent="."]
+offset_left = -1398.0
+offset_top = -904.0
+offset_right = 2632.0
+offset_bottom = 1466.0
+color = Color(0.0966166, 0.093, 0.31, 1)
+
+[node name="Starts" type="Node2D" parent="."]
+
+[node name="Star" type="Sprite2D" parent="Starts"]
+position = Vector2(163, 456)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star4" type="Sprite2D" parent="Starts"]
+position = Vector2(694, 537)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star5" type="Sprite2D" parent="Starts"]
+position = Vector2(903, 163)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star6" type="Sprite2D" parent="Starts"]
+position = Vector2(432, 86)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star2" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.513726)
+position = Vector2(163, 456)
+rotation = 0.401426
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star7" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.513726)
+position = Vector2(472, 382)
+rotation = 0.401426
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star8" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.513726)
+position = Vector2(1104, 569)
+rotation = 0.401426
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star9" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.513726)
+position = Vector2(84, 47)
+rotation = 0.401426
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star3" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.203922)
+position = Vector2(163, 456)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star10" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.203922)
+position = Vector2(94, 556)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star11" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.203922)
+position = Vector2(1018, 265)
+texture = ExtResource("1_n6hgd")
+
+[node name="Star12" type="Sprite2D" parent="Starts"]
+modulate = Color(1, 1, 1, 0.203922)
+position = Vector2(659, 64)
+texture = ExtResource("1_n6hgd")
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Planet" parent="Planets" instance=ExtResource("2_x217o")]
+position = Vector2(670, 238)
+
+[node name="Planet2" parent="Planets" instance=ExtResource("2_x217o")]
+position = Vector2(955, 477)
+texture = ExtResource("2_0a2q3")
+
+[node name="Planet3" parent="Planets" instance=ExtResource("2_x217o")]
+position = Vector2(382, 539)
+texture = ExtResource("3_n6hgd")
+
+[node name="Planet4" parent="Planets" instance=ExtResource("2_x217o")]
+position = Vector2(139, 185)
+texture = ExtResource("4_wfdyj")
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Spaceship" parent="Player" instance=ExtResource("1_ugvpa")]
+position = Vector2(313, 344)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 70
+
+[node name="Counter" parent="CanvasLayer/MarginContainer" instance=ExtResource("7_wfdyj")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

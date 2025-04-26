@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://cc2pwecnk648u"]
+
+[ext_resource type="Script" uid="uid://g7src0k23cvt" path="res://scenes/space/planet/planet.gd" id="1_wd0ew"]
+[ext_resource type="Texture2D" uid="uid://col1q26pm1mhd" path="res://assets/planets/planet09.png" id="1_yq3nw"]
+[ext_resource type="PackedScene" uid="uid://bmwfe1m55krwq" path="res://scenes/space/ui/action_button_popup.tscn" id="3_sjffs"]
+[ext_resource type="Texture2D" uid="uid://dqpr8p63tb0yu" path="res://assets/planets/star.png" id="4_w7c4d"]
+
+[sub_resource type="Animation" id="Animation_yq3nw"]
+resource_name = "beat"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundFeedback:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.117647), Color(1, 1, 1, 0.117647), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundFeedback:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.15, 0.15), Vector2(0.15, 0.15)]
+}
+
+[sub_resource type="Animation" id="Animation_wd0ew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundFeedback:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.117647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundFeedback:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sjffs"]
+_data = {
+&"RESET": SubResource("Animation_wd0ew"),
+&"beat": SubResource("Animation_yq3nw")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjffs"]
+radius = 75.06
+
+[sub_resource type="Gradient" id="Gradient_7xox7"]
+offsets = PackedFloat32Array(0.453184, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="Planet" type="Node2D"]
+script = ExtResource("1_wd0ew")
+
+[node name="BackgroundFeedback" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.117647)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_yq3nw")
+
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_yq3nw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sjffs")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_sjffs")
+
+[node name="ActionButtonPopup" parent="." node_paths=PackedStringArray("appear_marker") instance=ExtResource("3_sjffs")]
+appear_marker = NodePath("../ButtonMarker")
+
+[node name="ButtonMarker" type="Marker2D" parent="."]
+position = Vector2(-45, -181)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+texture = ExtResource("4_w7c4d")
+spread = 179.29
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.2
+scale_amount_min = 0.3
+scale_amount_max = 1.3
+color_ramp = SubResource("Gradient_7xox7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
