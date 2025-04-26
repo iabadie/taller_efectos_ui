@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c71qmixrcx8ab"]
+[gd_scene load_steps=5 format=3 uid="uid://c71qmixrcx8ab"]
 
 [ext_resource type="Script" uid="uid://dxt0p5v07ad8g" path="res://scenes/space/spaceship/spaceship.gd" id="1_nbbix"]
 [ext_resource type="Texture2D" uid="uid://cuuipw6mg2pp3" path="res://assets/spaceship/spaceship.png" id="2_63fgw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0k7fm"]
 radius = 27.074
-
-[sub_resource type="Gradient" id="Gradient_63fgw"]
-offsets = PackedFloat32Array(0, 0.59176, 1)
-colors = PackedColorArray(0.785872, 0.83, 0.5893, 1, 1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_63fgw"]
 radius = 28.0713
@@ -25,17 +21,6 @@ rotation = 1.5708
 [node name="SpaceshipSprite" type="Sprite2D" parent="Anchor"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_63fgw")
-
-[node name="GPUParticles2D" type="CPUParticles2D" parent="Anchor/SpaceshipSprite"]
-amount = 18
-emission_shape = 1
-emission_sphere_radius = 23.35
-gravity = Vector2(0, 0)
-angular_velocity_min = -141.71
-angular_velocity_max = 137.14
-scale_amount_min = 0.5
-scale_amount_max = 1.5
-color_ramp = SubResource("Gradient_63fgw")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0

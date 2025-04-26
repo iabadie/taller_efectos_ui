@@ -11,9 +11,9 @@ func update_label():
 	label.text = str(counter)
 	
 func play_animation():
-	animation_player.play("add")
+	pass
 	
 func _group_add_count():
 	counter += 1
-	play_animation()
+	update_label()
 	
