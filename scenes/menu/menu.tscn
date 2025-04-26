@@ -1,0 +1,184 @@
+[gd_scene load_steps=10 format=3 uid="uid://8uijtxpmai1d"]
+
+[ext_resource type="PackedScene" uid="uid://3vb7rrpraft0" path="res://scenes/menu/button_control.tscn" id="1_e0arn"]
+[ext_resource type="Script" uid="uid://binkbs5aoipsr" path="res://scenes/menu/menu.gd" id="1_mcvr8"]
+[ext_resource type="PackedScene" uid="uid://km36nrykmui8" path="res://scenes/space/space.tscn" id="2_e0arn"]
+[ext_resource type="Texture2D" uid="uid://dqpr8p63tb0yu" path="res://assets/planets/star.png" id="4_r8yej"]
+[ext_resource type="Texture2D" uid="uid://col1q26pm1mhd" path="res://assets/planets/planet09.png" id="5_3y2rt"]
+[ext_resource type="Texture2D" uid="uid://cuuipw6mg2pp3" path="res://assets/spaceship/spaceship.png" id="6_t0a87"]
+
+[sub_resource type="Animation" id="Animation_r8yej"]
+resource_name = "spaceship"
+length = 14.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images/Spaceship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433143, 1.9889, 4.5, 5.97924, 8.03333, 10.0333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(968, 538), Vector2(968, 538), Vector2(-93, 359), Vector2(561, 260), Vector2(561, 260), Vector2(1445, 280), Vector2(968, 538)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images/Spaceship:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433143, 1.90583, 1.99246, 4.23333, 4.49385, 5.9882, 7.70994, 8.98771, 11.9981),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.37183, -1.37183, 1.39975, 1.04982, 1.64235, 1.64235, 1.64235, -2.21308, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3y2rt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Images/Spaceship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(968, 538)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Images/Spaceship:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y2rt"]
+_data = {
+&"RESET": SubResource("Animation_3y2rt"),
+&"spaceship": SubResource("Animation_r8yej")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mcvr8")
+scene = ExtResource("2_e0arn")
+
+[node name="Space" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -1398.0
+offset_top = -904.0
+offset_right = 2632.0
+offset_bottom = 1466.0
+color = Color(0.0966166, 0.093, 0.31, 1)
+
+[node name="Images" type="Node2D" parent="."]
+
+[node name="Star7" type="Sprite2D" parent="Images"]
+position = Vector2(101, 492)
+texture = ExtResource("4_r8yej")
+
+[node name="Planet09" type="Sprite2D" parent="Images"]
+position = Vector2(1302, 764)
+texture = ExtResource("5_3y2rt")
+
+[node name="Star" type="Sprite2D" parent="Images"]
+position = Vector2(104, 80)
+texture = ExtResource("4_r8yej")
+
+[node name="Star2" type="Sprite2D" parent="Images"]
+position = Vector2(528, 554)
+texture = ExtResource("4_r8yej")
+
+[node name="Star3" type="Sprite2D" parent="Images"]
+position = Vector2(1025, 203)
+texture = ExtResource("4_r8yej")
+
+[node name="Star4" type="Sprite2D" parent="Images"]
+position = Vector2(560, 259)
+texture = ExtResource("4_r8yej")
+
+[node name="Star5" type="Sprite2D" parent="Images"]
+position = Vector2(1034, 59)
+texture = ExtResource("4_r8yej")
+
+[node name="Star6" type="Sprite2D" parent="Images"]
+position = Vector2(781, 408)
+texture = ExtResource("4_r8yej")
+
+[node name="Spaceship" type="Sprite2D" parent="Images"]
+position = Vector2(968, 538)
+texture = ExtResource("6_t0a87")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "SPACE FEELING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="StartControl" parent="VBoxContainer/MarginContainer2/VBoxContainer/Control" instance=ExtResource("1_e0arn")]
+
+[node name="Control2" type="Control" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="SocialsControl" parent="VBoxContainer/MarginContainer2/VBoxContainer/Control2" instance=ExtResource("1_e0arn")]
+title = "Socials"
+
+[node name="Control3" type="Control" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ExitControl" parent="VBoxContainer/MarginContainer2/VBoxContainer/Control3" instance=ExtResource("1_e0arn")]
+title = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3y2rt")
+}
+autoplay = "spaceship"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/VBoxContainer/Control/StartControl" to="." method="_on_start_control_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/VBoxContainer/Control2/SocialsControl" to="." method="_on_socials_control_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/VBoxContainer/Control3/ExitControl" to="." method="_on_exit_control_pressed"]
